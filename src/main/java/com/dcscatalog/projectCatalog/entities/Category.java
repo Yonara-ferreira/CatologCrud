@@ -1,13 +1,16 @@
 package com.dcscatalog.projectCatalog.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-@Entity
-public class Category {
 
-    private Long id;
+public class Category implements Serializable{
+	private static final long serialVersionUID = 1L;	
+	
+	@Id
+	private Long id;
     private String name;
     
     public Category() {

@@ -99,6 +99,14 @@ public class Product implements Serializable{
 	public void setDate(Instant date) {
 		this.date = date;
 	}
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
+	}
 
 	@Override
 	public int hashCode() {
@@ -116,5 +124,6 @@ public class Product implements Serializable{
 		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
+
 
 }

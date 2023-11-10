@@ -46,6 +46,7 @@ public class ProductDTO implements Serializable{
 	
 	public ProductDTO(Product entity, Set<Category> categories) {
 		this(entity);
+		this.categories = new ArrayList<>();
 		categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
 	}
 
@@ -96,5 +97,15 @@ public class ProductDTO implements Serializable{
 	public void setDate(Instant date) {
 		this.date = date;
 	}
+
+	public List<CategoryDTO> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<CategoryDTO> categories) {
+		this.categories = categories;
+	}
+
+	
 	
 }

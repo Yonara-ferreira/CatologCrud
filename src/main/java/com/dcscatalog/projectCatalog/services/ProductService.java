@@ -2,6 +2,7 @@ package com.dcscatalog.projectCatalog.services;
 
 import java.util.Optional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -33,7 +34,8 @@ public class ProductService {
 	public ProductDTO findByIdProduct(Long id) {
 		Optional<Product> obj = repository.findById(id);
 		Product entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-		return new ProductDTO(entity);
+		Hibernate.initialize(entity.getCategories());
+		return new ProductDTO(entity, entity.getCategories());
 	}
 
 	@Transactional
